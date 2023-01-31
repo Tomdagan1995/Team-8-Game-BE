@@ -12,7 +12,7 @@ router.post("/", checkEmail, async (req, res) => {
     .from("users")
     .insert(user)
     .then((result) => {
-      console.log(result);
+      console.log("this is result", result);
     });
   res.send({ userId: user.id });
 });
