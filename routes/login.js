@@ -1,13 +1,12 @@
 const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
-const { checkPassword } = require("../db_models");
-const jwt = require("jsonwebtoken");
+const { checkPassword,authenticator } = require("../db_models");
 require("dotenv").config();
 
 
 
-router.post("/", checkPassword, async (req, res) => {
+router.post("/", checkPassword,authenticator, async (req, res) => {
   const check = await bcrypt.compare(
     `${req.body.password}`,
     `${req.result.data[0].password}`
@@ -19,7 +18,6 @@ router.post("/", checkPassword, async (req, res) => {
   }
 });
 
-// jwt.sign( process.env.ACCESS_TOKEN_SECRET, (err, token) => {
-//     res.json({ token });
+
 
 module.exports = router;
