@@ -38,7 +38,7 @@ const getAllScores = async (req, res) => {
       .from("scores")
       .select("*")
       .order("score", {ascending: false})
-      .limit(10)
+      .limit(5)
 
     if (result) {
       console.log("Scores retrieved from the database", result);
@@ -58,7 +58,7 @@ const getAllScoresMain = async (req, res) => {
       .from("scoresMain")
       .select("*")
       .order("score", {ascending: false})
-      .limit(10)
+      .limit(5)
 
     if (result) {
       console.log("Scores retrieved from the database", result);
