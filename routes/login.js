@@ -1,22 +1,13 @@
 const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
-const { checkPassword,authenticator } = require("../db_models");
+const { checkPassword} = require("../db_models");
 require("dotenv").config();
+const  {login} = require('../controllers/users.controllers.js')
 
 
 
-router.post("/", checkPassword,authenticator, async (req, res) => {
-  const check = await bcrypt.compare(
-    `${req.body.password}`,
-    `${req.result.data[0].password}`
-  );
-  if (check) {
-    res.send({ ...req.result.data[0], password: null });
-  } else {
-    res.status(400).send("Incorrect info");
-  }
-});
+router.post('/', login)
 
 
 
