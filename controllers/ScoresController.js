@@ -1,13 +1,15 @@
 require("../index");
 
-const supabase = require("@supabase/supabase-js");
+const express = require("express");
+const {  supabase } = require("../db_models");
+
 
 const AddScore = async (req, res) => {
   try {
     const { email, score } = req.body;
     const date = new Date().toLocaleString();
 
-    await supabase.from("scores").insert({ email, score, date });
+await supabase.from("scores").insert({ email, score, date });
 
     res.status(200).send({ message: "Score added successfully" });
   } catch (err) {
