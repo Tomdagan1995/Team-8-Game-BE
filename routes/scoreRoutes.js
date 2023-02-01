@@ -3,11 +3,13 @@ require("../index");
 const ScoresController = require("../controllers/ScoresController");
 const router = express.Router();
 
-router.post("/", ScoresController.AddScore);
+router.post("/Light", ScoresController.AddScore);
+router.post("/Main", ScoresController.AddScoreMain);
 // Get All Users Score History API
 // Route: ‘/scores [GET] (Protected to user only)
 // Responsible for getting all the users scores
-router.get("/", ScoresController.getAllScores);
+router.get("/Light", ScoresController.getAllScores);
+router.get("/Main", ScoresController.getAllScoresMain);
 // Get Logged In User’s Score history API
 // Route: ‘/scores/:id [GET]
 
