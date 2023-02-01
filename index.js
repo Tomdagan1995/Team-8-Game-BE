@@ -1,5 +1,6 @@
 const express = require("express");
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config({ path: `.env` });
 const PORT = process.env.PORT || 3000;
 const signup = require("./routes/signup");
 const scoreRoutes = require("./routes/scoreRoutes");
