@@ -6,10 +6,10 @@ const {  supabase } = require("../db_models");
 
 const AddScore = async (req, res) => {
   try {
-    const { email, score } = req.body;
-    const date = new Date().toLocaleString();
+    const {user, score} = req.body;
+    const newUser = {...req.body}
 
-await supabase.from("scores").insert({ email, score, date });
+await supabase.from("scores").insert(newUser);
 
     res.status(200).send({ message: "Score added successfully" });
   } catch (err) {
