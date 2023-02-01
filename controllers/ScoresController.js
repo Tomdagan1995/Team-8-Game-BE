@@ -20,13 +20,9 @@ await supabase.from("scores").insert({ email, score, date });
 
 const getAllScores = async (req, res) => {
   try {
-    const email = req.user.email;
     const result = await supabase
       .from("scores")
-      .select("*")
-      .eq("email", email)
-      .order("score desc")
-      .all();
+      .select("score");
 
     if (result) {
       console.log("Scores retrieved from the database", result);
