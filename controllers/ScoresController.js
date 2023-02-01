@@ -22,7 +22,9 @@ const getAllScores = async (req, res) => {
   try {
     const result = await supabase
       .from("scores")
-      .select("score");
+      .select("*")
+      .order("score", {ascending: false})
+      .limit(10)
 
     if (result) {
       console.log("Scores retrieved from the database", result);
